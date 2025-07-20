@@ -2,52 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Startup Bankruptcy Predictor</title>
+    <title>Startup Bankruptcy Prediction</title>
     <style>
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #e8f5e9;
-            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f8;
             margin: 0;
             padding: 0;
         }
-
         .container {
-            margin-top: 100px;
+            width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ccc;
         }
-
-        h1 {
-            font-size: 36px;
-            color: #2e7d32;
+        h2 {
+            text-align: center;
+            color: #333;
         }
-
-        p {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 40px;
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
         }
-
-        .btn {
-            background-color: #388e3c;
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .submit-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
             color: white;
-            padding: 15px 30px;
+            font-weight: bold;
             border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            text-decoration: none;
+            border-radius: 5px;
             cursor: pointer;
         }
-
-        .btn:hover {
-            background-color: #2e7d32;
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e0f7fa;
+            border: 1px solid #0097a7;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #00796b;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Startup Bankruptcy Predictor</h1>
-        <p>Use our deep learning model to predict if a startup is at risk of bankruptcy based on key business factors.</p>
-        <a href="/predict" class="btn">Start Prediction</a>
+        <h2>Startup Bankruptcy Prediction</h2>
+        <form action="/predict" method="POST">
+            <label>Debt ratio %:</label>
+            <input type="number" step="any" name="debt_ratio" required>
+
+            <label>Total debt/Total net worth:</label>
+            <input type="number" step="any" name="total_debt_net_worth" required>
+
+            <label>Cash/Total Assets:</label>
+            <input type="number" step="any" name="cash_total_assets" required>
+
+            <label>Net worth/Assets:</label>
+            <input type="number" step="any" name="net_worth_assets" required>
+
+            <label>Operating Profit Rate:</label>
+            <input type="number" step="any" name="operating_profit_rate" required>
+
+            <label>Interest Expense Ratio:</label>
+            <input type="number" step="any" name="interest_expense_ratio" required>
+
+            <button class="submit-btn" type="submit">Predict</button>
+        </form>
+
+        {% if results %}
+        <div class="result">
+            Prediction: <strong>{{ results }}</strong>
+        </div>
+        {% endif %}
     </div>
 </body>
 </html>

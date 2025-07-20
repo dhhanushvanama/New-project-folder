@@ -2,92 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Startup Bankruptcy Prediction</title>
+    <title>Startup Bankruptcy Predictor</title>
     <style>
         body {
+            background-color: #f8f9fa;
             font-family: Arial, sans-serif;
-            background-color: #f4f7f8;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 500px;
-            margin: 50px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px #ccc;
-        }
-        h2 {
             text-align: center;
-            color: #333;
+            padding-top: 100px;
         }
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .submit-btn {
-            margin-top: 20px;
-            width: 100%;
-            padding: 12px;
-            background-color: #4CAF50;
+        .btn {
+            padding: 15px 30px;
+            background-color: #007BFF;
             color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 8px;
         }
-        .result {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #e0f7fa;
-            border: 1px solid #0097a7;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #00796b;
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        h1 {
+            color: #343a40;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Startup Bankruptcy Prediction</h2>
-        <form action="/predict" method="POST">
-            <label for="Industrial_Risk">Industrial Risk:</label>
-            <input type="number" step="any" name="Industrial_Risk" required>
-
-            <label for="Management_Risk">Management Risk:</label>
-            <input type="number" step="any" name="Management_Risk" required>
-
-            <label for="Financial_Flexibility">Financial Flexibility:</label>
-            <input type="number" step="any" name="Financial_Flexibility" required>
-
-            <label for="Credibility">Credibility:</label>
-            <input type="number" step="any" name="Credibility" required>
-
-            <label for="Competitiveness">Competitiveness:</label>
-            <input type="number" step="any" name="Competitiveness" required>
-
-            <label for="Operating_Risk">Operating Risk:</label>
-            <input type="number" step="any" name="Operating_Risk" required>
-
-            <button class="submit-btn" type="submit">Predict</button>
-        </form>
-
-        {% if results %}
-        <div class="result">
-            Prediction: <strong>{{ results }}</strong>
-        </div>
-        {% endif %}
-    </div>
+    <h1>Welcome to the Startup Bankruptcy Predictor</h1>
+    <a href="/predict" class="btn">Get Started</a>
 </body>
 </html>

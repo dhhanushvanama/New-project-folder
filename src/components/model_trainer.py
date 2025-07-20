@@ -12,6 +12,7 @@ from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, roc_curve, confusion_matrix, classification_report
 from src.utils import evaluate_models
 from imblearn.over_sampling import SMOTE
+from sklearn.pipeline import Pipeline
 
 from src.exception import CustomException
 from src.logger import logging
@@ -95,10 +96,19 @@ class ModelTrainer:
 
             # logging.info(f"Best model found: {best_model_name} with accuracy: {best_model_score:.2f}")
 
-            save_object(
-                file_path=self.model_trainer_config.trained_model_file_path,
-                obj=best_model
-            )
+            # Save full pipeline (preprocessor + model)
+
+            # If you have a preprocessor, import or define it above. If not, use 'passthrough'.
+            from sklearn.pipeline import make_pipeline
+            preprocessor = 'passthrough'  # Replace with your actual preprocessor if available
+
+            full_pipeline = Pipeline(steps=[
+                ("preprocessor", preprocessor),
+                ("model", best_model)
+      ])
+
+            save_object(file_path=self.model_trainer_config.trained_model_file_path, obj=full_pipeline)
+
 
             y_train_pred = best_model.predict(X_train)
             train_accuracy = accuracy_score(y_train, y_train_pred)
