@@ -105,7 +105,7 @@ class ModelTrainer:
             full_pipeline = Pipeline(steps=[
                 ("preprocessor", preprocessor),
                 ("model", best_model)
-      ])
+            ])
 
             save_object(file_path=self.model_trainer_config.trained_model_file_path, obj=full_pipeline)
 
